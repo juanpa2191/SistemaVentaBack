@@ -95,6 +95,71 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/clientes/{id}:
+ *   put:
+ *     summary: Actualiza un cliente existente
+ *     tags: [Clientes]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          schema:
+ *            type: integer
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/ClienteInput'
+ *      responses:
+ *        200:
+ *          description: Cliente actualizado exitosamente
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Cliente'
+ */
+router.put('/:id', async (req, res, next) => {
+  try {
+    const cliente = await clienteRepository.update(parseInt(req.params.id), req.body);
+    if (!cliente) {
+      return next(new NotFoundError('Cliente no encontrado'));
+    }
+    res.json(cliente.toJSON());
+  } catch (error) {
+    next(error);
+  }
+});
 
+/**
+ * @swagger
+ * /api/clientes/{id}:
+ *   delete:
+ *     summary: Elimina un cliente por ID
+ *     tags: [Clientes]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           description: ID del cliente a eliminar
+ *     responses:
+ *       204:
+ *         description: Cliente eliminado exitosamente
+ */
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const deleted = await clienteRepository.delete(parseInt(req.params.id));
+    if (!deleted) {
+      return next(new NotFoundError('Cliente no encontrado'));
+    }
+    res.status(204).send();
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
