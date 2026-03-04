@@ -4,7 +4,7 @@ const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 3306,
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'root',
+  password: process.env.DB_PASSWORD || 'unac1234',
   multipleStatements: true
 };
 
@@ -12,6 +12,8 @@ const initDatabase = async () => {
   let connection;
   
   try {
+
+    console.log(dbConfig);
     connection = await mysql.createConnection(dbConfig);
     console.log('✅ Conexión a MySQL establecida');
 
@@ -21,13 +23,14 @@ const initDatabase = async () => {
       -- ===============================
       CREATE TABLE IF NOT EXISTS cliente (
           id INT AUTO_INCREMENT PRIMARY KEY,
-          nombre VARCHAR(100) NOT NULL,
-          email VARCHAR(150) UNIQUE,
-          telefono VARCHAR(20),
-          direccion VARCHAR(200),
-          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-      );
+          nombre VARCHAR (100) NOT NULL,
+          tipo_doc VARCHAR (100) NOT NULL,
+          doc_id INT UNIQUE NOT NULL,
+          email VARCHAR (150) UNIQUE,
+          telefono VARCHAR (20),
+          direccion VARCHAR (200),
+          created_at timestamp default current_timestamp,
+          updated_at timestamp default current_timestamp on update current_timestamp
 
       -- ===============================
       -- PROVEEDORES
