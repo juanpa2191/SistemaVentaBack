@@ -12,6 +12,7 @@ const { errorHandler, notFoundHandler } = require('./common/middleware/errorHand
 
 // Rutas
 const productoRoutes = require('./presentation/routes/producto.routes');
+const clienteRoutes = require('./presentation/routes/cliente.routes');
 
 const app = express();
 
@@ -27,6 +28,7 @@ swaggerDocs(app);
 
 // Rutas de la API
 app.use('/api/productos', productoRoutes);
+app.use('/api/clientes', clienteRoutes);
 
 // Ruta raíz
 app.get('/', (req, res) => {
