@@ -28,6 +28,8 @@ const options = {
           properties: {
             id: { type: 'integer' },
             nombre: { type: 'string' },
+            tipo_doc: { type: 'string' },
+            doc_id: { type: 'string' },
             email: { type: 'string', format: 'email' },
             telefono: { type: 'string' },
             direccion: { type: 'string' },
@@ -40,6 +42,8 @@ const options = {
           required: ['nombre'],
           properties: {
             nombre: { type: 'string' },
+            tipo_doc: { type: 'string' },
+            doc_id: { type: 'string' },
             email: { type: 'string', format: 'email' },
             telefono: { type: 'string' },
             direccion: { type: 'string' }

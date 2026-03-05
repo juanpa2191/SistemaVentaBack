@@ -3,9 +3,11 @@
  * Representa un cliente en el sistema
  */
 class Cliente {
-  constructor({ id, nombre, email, telefono, direccion, created_at, updated_at }) {
+  constructor({ id, nombre, tipo_doc, doc_id,  email, telefono, direccion, created_at, updated_at }) {
     this.id = id;
     this.nombre = nombre;
+    this.tipoDoc = tipo_doc;
+    this.docId = doc_id;
     this.email = email;
     this.telefono = telefono;
     this.direccion = direccion;
@@ -21,6 +23,8 @@ class Cliente {
     return {
       id: this.id,
       nombre: this.nombre,
+      tipo_doc: this.tipoDoc,
+      doc_id: this.docId,
       email: this.email,
       telefono: this.telefono,
       direccion: this.direccion,
