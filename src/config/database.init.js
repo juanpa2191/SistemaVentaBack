@@ -25,12 +25,13 @@ const initDatabase = async () => {
           id INT AUTO_INCREMENT PRIMARY KEY,
           nombre VARCHAR (100) NOT NULL,
           tipo_doc VARCHAR (100) NOT NULL,
-          doc_id INT UNIQUE NOT NULL,
+	        doc_id VARCHAR (30) UNIQUE NOT NULL,
           email VARCHAR (150) UNIQUE,
           telefono VARCHAR (20),
           direccion VARCHAR (200),
           created_at timestamp default current_timestamp,
           updated_at timestamp default current_timestamp on update current_timestamp
+      );
 
       -- ===============================
       -- PROVEEDORES

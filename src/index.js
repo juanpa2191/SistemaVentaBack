@@ -28,6 +28,7 @@ swaggerDocs(app);
 
 // Rutas de la API
 app.use('/api/productos', productoRoutes);
+app.use('/api/clientes', clienteRoutes);
 
 // Ruta raíz
 app.get('/', (req, res) => {

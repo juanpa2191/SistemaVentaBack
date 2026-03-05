@@ -101,23 +101,23 @@ router.post('/', async (req, res, next) => {
  *   put:
  *     summary: Actualiza un cliente existente
  *     tags: [Clientes]
- *      parameters:
- *        - in: path
- *          name: id
- *          required: true
- *          schema:
- *            type: integer
- *      requestBody:
- *        required: true
- *        content:
- *          application/json:
- *            schema:
- *              $ref: '#/components/schemas/ClienteInput'
- *      responses:
- *        200:
- *          description: Cliente actualizado exitosamente
- *          content:
- *            application/json:
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ClienteInput'
+ *     responses:
+ *       200:
+ *         description: Cliente actualizado exitosamente
+ *         content:
+ *           application/json:
  *              schema:
  *                $ref: '#/components/schemas/Cliente'
  */
